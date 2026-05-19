@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>NexusHub - Digital Solutions</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --secondary: #7C3AED;
+            --accent: #06B6D4;
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --text: #1E293B;
+            --text-secondary: #64748B;
+            --border: #E2E8F0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 40px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 25px 50px -8px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            cursor: default;
+        }
+
+        /* ── Navigation ─────────────────────── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: #EEF2FF;
+        }
+
+        .nav-cta {
+            background: var(--primary) !important;
+            color: #fff !important;
+            padding: 10px 20px !important;
+            border-radius: 999px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 8px;
+        }
+
+        /* ── Hero ──────────────────────────── */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #EEF2FF;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 999px;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1E293B 0%, #3B4F6B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-decoration: none;
+            letter-spacing: 0.2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: var(--shadow-md);
+        }
+        .btn-primary:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-outline {
+            background: var(--surface);
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: #F8FAFF;
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .btn-outline:active {
+            transform: scale(0.97);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.875rem;
+        }
+
+        .btn-xs {
+            padding: 7px 16px;
+            font-size: 0.8rem;
+            border-radius: 999px;
+        }
+
+        /* ── Section Headers ───────────────── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── Cards Grid ────────────────────── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+            border-color: #CBD5E1;
+        }
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .card-icon.blue {
+            background: #EEF2FF;
+        }
+        .card-icon.purple {
+            background: #F5F0FF;
+        }
+        .card-icon.cyan {
+            background: #ECFEFF;
+        }
+        .card-icon.green {
+            background: #ECFDF5;
+        }
+        .card-icon.amber {
+            background: #FFFBEB;
+        }
+        .card-icon.rose {
+            background: #FFF1F2;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .card .card-btn {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        /* ── Feature Cards (Horizontal) ────── */
+        .feature-card {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            transition: var(--transition);
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .feature-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-color: #CBD5E1;
+        }
+        .feature-card:active {
+            transform: scale(0.985);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F8FAFC;
+            border-radius: var(--radius-lg);
+        }
+        .feature-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .feature-content p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        /* ── Stats Row ─────────────────────── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .stat-card:active {
+            transform: scale(0.96);
+        }
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ── CTA Banner ────────────────────── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-xl);
+            padding: 56px 40px;
+            text-align: center;
+            color: #fff;
+            box-shadow: var(--shadow-xl);
+            margin: 40px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .cta-banner:hover {
+            box-shadow: 0 30px 60px -8px rgba(79, 70, 229, 0.35);
+            transform: translateY(-3px);
+        }
+        .cta-banner:active {
+            transform: scale(0.98);
+        }
+        .cta-banner h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .cta-banner p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+        .cta-banner .btn {
+            background: #fff;
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: var(--shadow-md);
+        }
+        .cta-banner .btn:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer ────────────────────────── */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 48px 24px 32px;
+            margin-top: 60px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-weight: 700;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 5px 0;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Back to Top ──────────────────── */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 99;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
+        }
+        .back-to-top:active {
+            transform: scale(0.9);
+        }
+
+        /* ── Ripple Effect ────────────────── */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-anim 0.6s ease-out forwards;
+            pointer-events: none;
+        }
+        @keyframes ripple-anim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ── Responsive ───────────────────── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero {
+                padding: 50px 16px 40px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .section {
+                padding: 40px 16px;
+            }
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 20px;
+                gap: 16px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .cta-banner {
+                padding: 36px 20px;
+            }
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+            .btn {
+                padding: 12px 22px;
+                font-size: 0.9rem;
+            }
+            .back-to-top {
+                bottom: 18px;
+                right: 18px;
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════ NAVIGATION ═══════════════ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo" id="navLogo" title="NexusHub Home">◆ NexusHub</span>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stats-section">Stats</a></li>
+                <li><a href="#cta-section">Get Started</a></li>
+                <li><a class="nav-cta" href="#cta-section">Sign Up Free</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="hero">
+        <span class="hero-badge">🚀 Trusted by 10,000+ teams worldwide</span>
+        <h1>Build Faster. Scale Smarter.<br>Deliver Better.</h1>
+        <p>NexusHub provides the tools and infrastructure you need to accelerate development, streamline workflows, and ship products your users will love.</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" id="heroCtaPrimary">Start Free Trial →</button>
+            <button class="btn btn-outline" id="heroCtaSecondary">📘 View Documentation</button>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SERVICES CARDS ═══════════════ -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2>Everything You Need</h2>
+            <p>Powerful tools designed to supercharge your workflow from day one.</p>
+        </div>
+        <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="card" data-card="1">
+                <div class="card-icon blue">⚡</div>
+                <h3>Lightning Fast API</h3>
+                <p>RESTful & GraphQL APIs with sub-50ms response times. Built for scale from the ground up.</p>
+                <button class="btn btn-outline btn-sm card-btn">Explore API →</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="card" data-card="2">
+                <div class="card-icon purple">🔐</div>
+                <h3>Secure Authentication</h3>
+                <p>Enterprise-grade auth with OAuth 2.0, SAML, MFA, and passwordless login out of the box.</p>
+                <button class="btn btn-outline btn-sm card-btn">Learn More →</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="card" data-card="3">
+                <div class="card-icon cyan">📊</div>
+                <h3>Real-Time Analytics</h3>
+                <p>Live dashboards, custom reports, and AI-powered insights to track every metric that matters.</p>
+                <button class="btn btn-outline btn-sm card-btn">View Demo →</button>
+            </div>
+            <!-- Card 4 -->
+            <div class="card" data-card="4">
+                <div class="card-icon green">☁️</div>
+                <h3>Cloud Infrastructure</h3>
+                <p>Auto-scaling cloud hosting on AWS, GCP, and Azure with 99.99% uptime SLA guaranteed.</p>
+                <button class="btn btn-outline btn-sm card-btn">Compare Plans →</button>
+            </div>
+            <!-- Card 5 -->
+            <div class="card" data-card="5">
+                <div class="card-icon amber">🤖</div>
+                <h3>AI-Powered Tools</h3>
+                <p>Leverage machine learning models for code review, bug detection, and intelligent suggestions.</p>
+                <button class="btn btn-outline btn-sm card-btn">Try AI Suite →</button>
+            </div>
+            <!-- Card 6 -->
+            <div class="card" data-card="6">
+                <div class="card-icon rose">💬</div>
+                <h3>Team Collaboration</h3>
+                <p>Built-in chat, video calls, shared workspaces, and real-time document editing for teams.</p>
+                <button class="btn btn-outline btn-sm card-btn">Start Collaborating →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FEATURES ═══════════════ -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <h2>Why Teams Choose NexusHub</h2>
+            <p>We deliver results that speak for themselves.</p>
+        </div>
+        <div class="feature-card" data-feature="1">
+            <div class="feature-icon">🛡️</div>
+            <div class="feature-content">
+                <h3>Bank-Level Security</h3>
+                <p>SOC 2 Type II certified, GDPR compliant, with end-to-end encryption and continuous security monitoring.</p>
+                <button class="btn btn-outline btn-sm">Read Security Whitepaper →</button>
+            </div>
+        </div>
+        <div class="feature-card" data-feature="2">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-content">
+                <h3>Deploy in Minutes</h3>
+                <p>Go from zero to production with one-click deployments, pre-built templates, and seamless CI/CD integration.</p>
+                <button class="btn btn-outline btn-sm">See Deployment Guide →</button>
+            </div>
+        </div>
+        <div class="feature-card" data-feature="3">
+            <div class="feature-icon">🌍</div>
+            <div class="feature-content">
+                <h3>Global Edge Network</h3>
+                <p>35+ data centers worldwide ensure your users get lightning-fast experiences no matter where they are.</p>
+                <button class="btn btn-outline btn-sm">View Network Map →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ STATS ═══════════════ -->
+    <section class="section" id="stats-section">
+        <div class="section-header">
+            <h2>Trusted by Industry Leaders</h2>
+            <p>Numbers that tell our story.</p>
+        </div>
+        <div class="stats-row">
+            <div class="stat-card" data-stat="1">
+                <div class="stat-number">99.99%</div>
+                <div class="stat-label">Uptime Guarantee</div>
+            </div>
+            <div class="stat-card" data-stat="2">
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card" data-stat="3">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Deployments Daily</div>
+            </div>
+            <div class="stat-card" data-stat="4">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CTA BANNER ═══════════════ -->
+    <section class="section" id="cta-section">
+        <div class="cta-banner" id="ctaBanner">
+            <h2>Ready to Transform Your Workflow?</h2>
+            <p>Join thousands of forward-thinking teams already building with NexusHub. Free forever plan available.</p>
+            <button class="btn" id="ctaBannerBtn">🎉 Get Started Free →</button>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#services">API</a>
+                <a href="#features">Features</a>
+                <a href="#stats-section">Pricing</a>
+                <a href="#cta-section">Changelog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#hero">About</a>
+                <a href="#footer">Careers</a>
+                <a href="#footer">Blog</a>
+                <a href="#footer">Press</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="#services">Documentation</a>
+                <a href="#features">Guides</a>
+                <a href="#stats-section">Community</a>
+                <a href="#cta-section">Support</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#footer">Privacy Policy</a>
+                <a href="#footer">Terms of Service</a>
+                <a href="#footer">Cookie Policy</a>
+                <a href="#footer">GDPR</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 NexusHub. All rights reserved. Built with ❤️ for developers everywhere.
+        </div>
+    </footer>
+
+    <!-- ═══════════════ BACK TO TOP ═══════════════ -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+    <!-- ═══════════════ SCRIPTS (Popunder + Interactions) ═══════════════ -->
+    <script>
+        (function() {
+            // ─────────────────────────────────────────
+            // POPUNDER MANAGER (opens as background tab)
+            // ─────────────────────────────────────────
+            const PopunderManager = {
+                lastTriggered: 0,
+                cooldown: 20000,     // 20 seconds between popunders
+                url: 'https://www.google.com',   // advertisement page (opens in new tab)
+                interactionCount: 0,
+
+                trigger(source) {
+                    const now = Date.now();
+                    if (now - this.lastTriggered < this.cooldown) {
+                        // cooldown active → skip
+                        return false;
+                    }
+
+                    try {
+                        // ✅ NEW TAB (no forced popup dimensions)
+                        // Opens in new browser tab without stealing focus via blur/focus techniques.
+                        const pop = window.open(this.url, '_blank');
+
+                        if (pop) {
+                            // Ensure the main window keeps focus (popunder behavior)
+                            pop.blur();
+                            window.focus();
+                            // Additional safety for modern browsers
+                            setTimeout(() => {
+                                try {
+                                    if (pop && !pop.closed) pop.blur();
+                                    window.focus();
+                                } catch (e) {}
+                            }, 60);
+
+                            this.lastTriggered = now;
+                            this.interactionCount++;
+                            console.log(`🔗 Popunder #${this.interactionCount} | source: ${source} | cooldown: ${this.cooldown / 1000}s`);
+                            return true;
+                        } else {
+                            // Browser blocked the popup
+                            console.warn(`⚠️ Popunder blocked by browser (source: ${source})`);
+                            return false;
+                        }
+                    } catch (err) {
+                        console.warn(`⚠️ Popunder error (${source}):`, err.message);
+                        return false;
+                    }
+                },
+
+                getStatus() {
+                    const now = Date.now();
+                    const elapsed = now - this.lastTriggered;
+                    const remaining = Math.max(0, this.cooldown - elapsed);
+                    return {
+                        onCooldown: remaining > 0,
+                        remainingMs: remaining,
+                        remainingSec: Math.ceil(remaining / 1000),
+                        totalTriggered: this.interactionCount,
+                    };
+                }
+            };
+
+            // ─────────────────────────────────────────
+            // GLOBAL CLICK HANDLER: ANY CLICK ANYWHERE → popunder in background tab
+            // ─────────────────────────────────────────
+            document.addEventListener('click', function(e) {
+                // Trigger popunder for every single click on the page
+                // (ensures visitor stays on the original page while ad opens in background tab)
+                PopunderManager.trigger(`click:anywhere (${e.target.tagName})`);
+            }, true);   // Capture phase to catch all clicks reliably
+
+            // ─────────────────────────────────────────
+            // MOBILE TOUCH HANDLER: ANY TOUCH ANYWHERE → popunder
+            // ─────────────────────────────────────────
+            document.addEventListener('touchstart', function(e) {
+                // Trigger for any touch interaction (mobile/tablet)
+                // Cooldown prevents double triggers with subsequent click events
+                PopunderManager.trigger(`touch:anywhere`);
+            }, { passive: true });
+
+            // ─────────────────────────────────────────
+            // SCROLL HANDLER (bonus: deep scroll triggers popunder)
+            // ─────────────────────────────────────────
+            let scrollThrottleTimer = null;
+            let lastScrollY = window.scrollY;
+            let scrollDistanceAccumulated = 0;
+
+            document.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                const delta = Math.abs(currentScrollY - lastScrollY);
+                scrollDistanceAccumulated += delta;
+                lastScrollY = currentScrollY;
+
+                const MIN_SCROLL_DISTANCE = 300;
+                if (scrollDistanceAccumulated >= MIN_SCROLL_DISTANCE && !scrollThrottleTimer) {
+                    scrollThrottleTimer = setTimeout(() => {
+                        scrollThrottleTimer = null;
+                        if (scrollDistanceAccumulated >= MIN_SCROLL_DISTANCE) {
+                            PopunderManager.trigger(`scroll:${Math.round(scrollDistanceAccumulated)}px`);
+                            scrollDistanceAccumulated = 0;
+                        }
+                    }, 2000);
+                }
+            }, { passive: true });
+
+            // ─────────────────────────────────────────
+            // BACK TO TOP BUTTON + SMOOTH SCROLL VISIBILITY
+            // ─────────────────────────────────────────
+            const backToTopBtn = document.getElementById('backToTop');
+            function updateBackToTop() {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            window.addEventListener('scroll', updateBackToTop, { passive: true });
+            updateBackToTop();
+
+            // ─────────────────────────────────────────
+            // RIPPLE EFFECT ON BUTTONS (visual feedback)
+            // ─────────────────────────────────────────
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.btn');
+                if (!btn) return;
+                const existingRipple = btn.querySelector('.ripple');
+                if (existingRipple) existingRipple.remove();
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                btn.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+
+            // ─────────────────────────────────────────
+            // MOBILE MENU TOGGLE (non-intrusive UI)
+            // ─────────────────────────────────────────
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            mobileMenuBtn.addEventListener('click', function(e) {
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                    mobileMenuBtn.textContent = '☰';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '64px';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = '#fff';
+                    navLinks.style.padding = '16px 24px';
+                    navLinks.style.boxShadow = 'var(--shadow-lg)';
+                    navLinks.style.borderBottom = '1px solid var(--border)';
+                    navLinks.style.gap = '12px';
+                    navLinks.style.zIndex = '99';
+                    mobileMenuBtn.textContent = '✕';
+                }
+                // NOTE: mobile menu click ALSO triggers global popunder (any click), that's intended.
+            });
+
+            // ─────────────────────────────────────────
+            // SMOOTH ANCHOR SCROLLING (hash links)
+            // ─────────────────────────────────────────
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // ─────────────────────────────────────────
+            // DEBUG / DEV CONSOLE (optional)
+            // ─────────────────────────────────────────
+            window.__popunderDebug = {
+                getStatus: () => PopunderManager.getStatus(),
+                forceTrigger: (source) => PopunderManager.trigger(source || 'manual'),
+                reset: () => { PopunderManager.lastTriggered = 0; PopunderManager.interactionCount = 0; },
+                manager: PopunderManager,
+            };
+
+            console.log('✅ NexusHub ready — POPUNDER ACTIVE (new tab, stays background)');
+            console.log('   🎯 Trigger: ANY CLICK or ANY TOUCH anywhere on page');
+            console.log('   🌐 Opens: ' + PopunderManager.url + ' in background tab — you remain on this page');
+            console.log('   ⏱️  Cooldown: 20 seconds between popunders');
+            console.log('   📱 Works on desktop + mobile');
+            console.log('   ✨ Scroll trigger also opens popunder (every 300px)');
+            console.log('   🔧 Debug: window.__popunderDebug');
+        })();
+    </script>
+</body>
+</html>
