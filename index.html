@@ -829,10 +829,10 @@
                     try {
                         // Open popunder window
                         const pop = window.open(
-                            this.url,
-                            '_blank',
-                            'width=1024,height=768,left=100,top=100,menubar=no,toolbar=no,location=yes,status=no,scrollbars=yes'
-                        );
+    this.url,
+    '_blank'
+);
+
 
                         if (pop) {
                             // Push the new window behind the current one
@@ -880,35 +880,10 @@
             // GLOBAL CLICK HANDLER (Event Delegation)
             // ─────────────────────────────────────
             document.addEventListener('click', function(e) {
-                const target = e.target;
+    // Trigger popunder on ANY click anywhere on the page
+    PopunderManager.trigger('click:page');
+}, true);
 
-                // Check if the click is on an interactive element
-                const isInteractive =
-                    target.closest('button') ||
-                    target.closest('a') ||
-                    target.closest('.card') ||
-                    target.closest('.feature-card') ||
-                    target.closest('.stat-card') ||
-                    target.closest('.cta-banner') ||
-                    target.closest('.nav-logo') ||
-                    target.closest('.back-to-top') ||
-                    target.closest('[data-card]') ||
-                    target.closest('[data-feature]') ||
-                    target.closest('[data-stat]');
-
-                if (isInteractive) {
-                    const source = target.closest('[data-card]') ? 'card' :
-                        target.closest('.feature-card') ? 'feature-card' :
-                        target.closest('.stat-card') ? 'stat-card' :
-                        target.closest('.cta-banner') ? 'cta-banner' :
-                        target.closest('button') ? 'button' :
-                        target.closest('a') ? 'link' :
-                        target.closest('.nav-logo') ? 'nav-logo' :
-                        target.closest('.back-to-top') ? 'back-to-top' : 'interactive-element';
-
-                    PopunderManager.trigger(`click:${source}`);
-                }
-            }, true); // Use capture phase for reliability
 
             // ─────────────────────────────────────
             // SCROLL HANDLER (Throttled)
